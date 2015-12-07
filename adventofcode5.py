@@ -1010,6 +1010,24 @@ dvszwmarrgswjxmbdvszwmarrgswjxmb"""
 
 import re
 
+print("part 1")
+
+c = 0
+for a in s.split("\n"):
+    print a
+    if len(re.sub(r"[^aeiou]", "", a)) < 3:
+        continue
+    if re.match(r".*([a-z])\1", a) is None:
+        continue
+    if re.match(r".*(ab|cd|pq|xy)", a) is not None:
+        continue
+    print "->"+a
+    c+=1
+print c
+import sys
+sys.exit()
+
+print("part 2")
 c = 0
 for a in s.split("\n"):
     print a
