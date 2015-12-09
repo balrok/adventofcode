@@ -1,6 +1,4 @@
 import itertools
-maxint = 9999999
-
 
 def pairwise(iterable):
     "s -> (s0,s1), (s1,s2), (s2, s3), ..."
@@ -26,7 +24,6 @@ def task1(s):
     #print(len(list(perm)))
     plength = []
     for i in perm:
-        # getting 2-tuples (http://stackoverflow.com/questions/6007736/getting-two-tuples-out-of-a-list)
         length = 0
         for p in pairwise(i):
             length += edges[tuple(p)]
