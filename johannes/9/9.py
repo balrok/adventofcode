@@ -52,18 +52,13 @@ def f(t1, t2, trav):
 			tra.append(tx)
 			rem = t2[:]
 			rem.remove(tx)
-			trav2 = trav + m[(t1[-1],tx)]
+			if len(t1) == 0:
+				trav2 = 0
+			else:
+				trav2 = trav + m[(t1[-1],tx)]
 			tmi = f(tra, rem, trav2)
 			if tmi[1] < mi[1]:
 				mi = tmi
 	return mi
 
-mi = ([], float("inf"))
-for tx in t:
-	nt = t[:]
-	nt.remove(tx)
-	tmi = f([tx], nt, 0)
-	if tmi[1] < mi[1]:
-		mi = tmi
-
-print mi
+print f([],t,0)
