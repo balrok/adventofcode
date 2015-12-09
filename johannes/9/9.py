@@ -27,7 +27,7 @@ Straylight to AlphaCentauri = 107
 Straylight to Arbre = 14
 AlphaCentauri to Arbre = 46"""
 
-t = []
+t = set()
 m = {}
 
 for r in j.split("\n"):
@@ -37,10 +37,8 @@ for r in j.split("\n"):
 	d  = int(x[4])
 	m[(t1,t2)] = d
 	m[(t2,t1)] = d
-	if not t1 in t:
-		t.append(t1)
-	if not t2 in t:
-		t.append(t2)
+        t.add(t1)
+        t.add(t2)
 
 def f(t1, t2, trav):
 	if len(t2) == 0:
@@ -61,4 +59,4 @@ def f(t1, t2, trav):
 				mi = tmi
 	return mi
 
-print f([],t,0)
+print f([],list(t),0)
