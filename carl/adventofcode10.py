@@ -1,5 +1,7 @@
 import re
+import time
 
+start = time.time()
 s="1113222113"
 def repl(s):
     new = []
@@ -15,9 +17,6 @@ def repl(s):
         new.append(a[0])
     return "".join(new)
 
-for i in range(40):
+for i in range(60):
     s = repl(s)
-print s, len(s)
-for i in range(10):
-    s = repl(s)
-print s, len(s)
+    print i, len(s), time.time()-start
