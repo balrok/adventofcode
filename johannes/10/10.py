@@ -7,10 +7,9 @@ for x in range(50):
 		if d == n:
 			c += 1
 		else:
-			s += str(c)
-			s += str(n)
+			s += str(c) + str(n)
 			n = d
 			c = 1
 	s += str(c) + str(n)
 	i = s
-	print str(x + 1) + ": " + str(len(i))
+	print x + 1, len(i)
