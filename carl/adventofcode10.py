@@ -3,6 +3,11 @@ import re
 s="1113222113"
 def repl(s):
     new = []
+    # alternative solution with itertools
+    # but this is slower
+    # import itertools
+    #f = ["".join(grp) for num, grp in itertools.groupby(s)]
+    #for a in f:
     f = re.finditer(r"(\d)\1*", s)
     for m in f:
         a=m.group(0)
