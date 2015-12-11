@@ -8,14 +8,19 @@ s="1113222113"
 # re implementation - medium fast
 def repl1(s):
     new = []
-    # alternative solution with itertools
-    # but this is slower
-    # import itertools
-    #f = ["".join(grp) for num, grp in itertools.groupby(s)]
-    #for a in f:
-    f = re.finditer(r"(\d)\1*", s)
+    #f = re.finditer(r"(\d)\1*", s) this is a bit slower than the next
+    f = re.finditer(r"1+|2+|3+", s)
     for m in f:
         a=m.group(0)
+        new.append(str(len(a)))
+        new.append(a[0])
+    return "".join(new)
+
+def repl6(s):
+    new = []
+    #f = re.finditer(r"(\d)\1*", s) this is a bit slower than the next
+    f = re.findall(r"1+|2+|3+", s)
+    for a in f:
         new.append(str(len(a)))
         new.append(a[0])
     return "".join(new)
@@ -45,6 +50,6 @@ def repl5f(m):
 def repl5(s):
     return re.sub(r'(\d)\1*', repl5f, s)
 
-for i in range(80):
-    s = repl5(s)
+for i in range(50):
+    s = repl4(s)
     print i, len(s), time.time()-start #,s
