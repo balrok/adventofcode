@@ -1,7 +1,3 @@
-import pprint
-
-pp = pprint.PrettyPrinter(indent=2)
-
 i="""Alice would lose 57 happiness units by sitting next to Bob.
 Alice would lose 62 happiness units by sitting next to Carol.
 Alice would lose 75 happiness units by sitting next to David.
@@ -105,5 +101,4 @@ print r[1]
 # 	m[(p, "Johannes")] = 0
 # t.add("Johannes")
 
-print r[1] - min([ m[(r[0][i],r[0][(i+1)%len(r[0])])] for i in range(len(r[0]))])
-
+print r[1] - min([m[(r[0][i],r[0][(i+1)%len(r[0])])] for i in range(len(r[0]))])
