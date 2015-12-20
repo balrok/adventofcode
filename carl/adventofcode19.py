@@ -26,16 +26,6 @@ def gen_molecules(text):
     return molecules
 
     
-def gen_mapping_reverse():
-    targets = []
-    for m in mapping:
-        targets.append(m[1])
-    targets.sort(key = lambda s: len(s), reverse=True)
-    for t in targets:
-        for m in mapping:
-            if m[1] == t:
-                mapping_reverse.append((t, m[0]))
-
 def iter_molecules(from_to, text):
     pos = 0
     while True:
@@ -50,31 +40,34 @@ def iter_molecules(from_to, text):
             break
 
 best_depth = 999
-def gen_all_texts_backwards(text, depth):
+def gen_all_texts_backwards(text, depth, mapping, goal):
     global best_depth
     if depth > best_depth:
         return
-    if text == "e":
+    if text == goal:
         if depth < best_depth:
             print "found"
             print best_depth, depth
             best_depth = depth
     elif len(text) == 1:
         return
-    for m in mapping_reverse:
+    for m in mapping:
         for new_text in iter_molecules(m, text):
-            gen_all_texts_backwards(new_text, depth+1)
+            gen_all_texts_backwards(new_text, depth+1, mapping, goal)
 
 
 def run(s, task2=False):
     mapping, text = read(s)
+    mapping.sort(key = lambda s: len(s[1]))
+    for m in mapping:
+        mapping_reverse.append((m[1],m[0]))
     if not task2:
         molecules = gen_molecules(text)
         print len(molecules)
     else:
-        gen_mapping_reverse()
         print mapping_reverse
-        gen_all_texts_backwards(text,0)
+        mapping_reverse.reverse()
+        gen_all_texts_backwards(text, 0, mapping_reverse, "e")
 
 
 
