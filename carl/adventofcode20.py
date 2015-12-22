@@ -84,7 +84,6 @@ def find_present_house(range_start, range_end, queue):
             return
 
 
-processors = 4
 def task1():
     tasks = processors*[0]
     q = Queue()
@@ -127,7 +126,11 @@ def task2():
         if houses[elf_num] > find_num:
             print (elf_num, houses[elf_num], find_num)
             return
+
+
+
+processors = 8
 find_num /= 10
-#task1()
+task1()
 find_num *= 10
-task2()        
+#task2()        

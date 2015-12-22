@@ -91,7 +91,7 @@ def buy_all(base_money):
 def task1():
     for money in range(1, 10000):
         print(money)
-        for equip,it in buy_all(money):
+        for equip,_,it in buy_all(money):
             me_won, hp = fight(equip[0], equip[1])
             if me_won:
                 print(it)
@@ -100,19 +100,13 @@ def task1():
 def task2():
     most_spent = 0
     money = 999999
-    print(money)
     for equip,mon, it in buy_all(money):
         me_won, hp = fight(equip[0], equip[1])
         spent = money-mon
         if me_won == False and spent > most_spent:
             most_spent = spent
             print("new record: ", most_spent)
-#task1()
+task1()
+
+print("\n\n")
 task2()
-#fight(6,4)
-
-#41 too low
-# 48 too high
-
-#enemy=(12, 7, 2)
-#fight(5,5)
