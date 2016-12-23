@@ -1,7 +1,7 @@
-a=map(chr,range(97,123))
 y=z=0
 for l in open("input.txt").readlines():
- p=l.rfind("-");x=l[p+1:];s=l[:p];q=['']*99
- for i in a:q[s.count(i)]+=i
- c=int(x[:-8])*("".join(q[::-1])[:5]in x);y+=c;z+=c*("north"in"".join([a[(ord(i)-97+c)%26]for i in s]))
+ p=l.rfind("-");q=['']*9
+ for i in map(chr,range(97,123)):q[8-l[:p].count(i)]+=i
+ c=-int(l[p:-8]);y+=c*("".join(q)[:5]in l[p:])
+ if(ord(l[0])-97+c)%26==13:z=c
 print y,"\n",z
